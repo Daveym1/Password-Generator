@@ -90,10 +90,12 @@ var upperCasedCharacters = [
 
 var passwordLength = 10;
 var passwordOptions = [];
+var newPassword;
+var passwordText;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  
+
   passwordOptions = [];
   passwordLength = parseInt(prompt("How long do you want your password to be? (10-64 characters)"));
 
@@ -121,24 +123,36 @@ function getPasswordOptions() {
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) {
-
+function getRandom() {
+  var password = "";
+  for (i = 0; i < passwordLength; i ++) {
+    var randomCharacter = Math.floor(Math.random() * passwordOptions.length);
+    password = password + passwordOptions[randomCharacter];
+  
+  }
+  return password;
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+  getRandom();
 }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
+function writePassword() {
+
+  var validOptions = getPasswordOptions();
+
+  if (validOptions){
+
+    var newPassword = getRandom();
+    var passwordText = document.querySelector('#password');
+    passwordText.value = newPassword;
+  }
 }
 
 // Add event listener to generate button
