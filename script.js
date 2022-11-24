@@ -118,12 +118,18 @@ function getPasswordOptions() {
 
   if (confirm("Do you want lower case characters?")) {
     passwordOptions = passwordOptions.concat(lowerCasedCharacters);
-  } else {
-    alert("You need at least one character type");
-    return
+  }; 
+
+  if (passwordOptions == false){
+    alert("You need to specify at least one character type");
+    return false;
   }
+  
   return true;
 }
+
+ 
+
 
 // Function for getting a random element from an array
 function getRandom() {
