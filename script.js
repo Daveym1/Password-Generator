@@ -118,6 +118,9 @@ function getPasswordOptions() {
 
   if (confirm("Do you want lower case characters?")) {
     passwordOptions = passwordOptions.concat(lowerCasedCharacters);
+  } else {
+    alert("You need at least one character type");
+    return
   }
   return true;
 }
